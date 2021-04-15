@@ -3,6 +3,18 @@
 
 let board = [];
 
+function reset(){
+    for (let i = 0; i < 9; i++){
+        document.getElementById(i).innerText = '';
+    }
+   board = [];
+ }
+
+
+function resetButton(){
+    reset();
+}
+
 function play(clickedId){
     const playerSpan = document.getElementById('player');
     const clickedElement = document.getElementById(clickedId);
@@ -17,7 +29,6 @@ function play(clickedId){
         board[clickedId] = '0';
     }
    console.log(board);
- 
     const topL = board[0];
     const topC = board[1];
     const topR = board[2];
@@ -31,31 +42,40 @@ function play(clickedId){
 
 // winning sets //
 
-    if (topL !== undefined && topL === topC && topL === topR){
-        window.alert (`${topL}is the winner!`);
-    }
-    if (middleL !== undefined && middleL === middleC && middleL === middleR){
+if (topL !== undefined && topL === topC && topL === topR){
+    window.alert (`${topL}is the winner!`);
+    reset();
+
+ }
+
+if (middleL !== undefined && middleL === middleC && middleL === middleR){
     window.alert (`${middleL} is the winner!`);
+    reset();
    
 }
 if (bottomL !== undefined && bottomL === bottomC && bottomL === bottomR){
     window.alert (`${bottomL} is the winner!`);
+    reset();
    
 }
 if (topL !== undefined && topL === middleC && topL === bottomR){
     window.alert(`${topL} is the winner!`);
+    reset();
   
 }
 if (topR !== undefined && topR === middleC && topR === bottomL){
     window.alert (`${topR} is the winner!`);
+    reset();
   
 }
 if (topL !== undefined && topL === middleC && topL === bottomL){
     window.alert(`${topL} is the winner!`);
+    reset();
  
 }
 if (topR !== undefined && topR === middleR && topR === bottomR){
     window.alert (`${ topR } is the winner!`);
+    reset();
     
 }
 
@@ -69,18 +89,10 @@ for (let i = 0; i <= 8; i++){
   }
 }
 if (boardFull === true){
-    reset();
-    console.log(board);
     window.alert ('no winner');
+    reset();
     
 }
 
-//reset//
-function reset(){
-   board = [];
- }
-
-
 
 }
-
